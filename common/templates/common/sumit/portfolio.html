@@ -1,0 +1,30 @@
+{% extends 'common/sumit/sumit_starter.html' %}
+{% block content %}
+{% load static %}
+
+<!-- About -->
+<div class="pb-3">
+	<h1 class="title title--h1 title__separate">Portfolio</h1>
+</div>
+
+<!-- Gallery -->
+<div class="gallery-grid js-masonry js-filter-container">
+	<div class="gutter-sizer"></div>
+
+	<!-- Item 1 -->
+	{% for project in porject_list %}
+		<div class="gallery-grid__item category-design">
+			<a href="{% url 'common:sumit_project_detail' project.id %}">
+				<div class="gallery-grid__image-wrap">
+					<img class="gallery-grid__image cover lazyload"
+						src="{{project.cover_image.url}}" alt="" />
+				</div>
+				<div class="gallery-grid__caption">
+					<h3 class="title gallery-grid__title">{{project.title}}</h3>
+				</div>
+			</a>
+		</div>
+	{% endfor %}
+
+</div>
+{% endblock content %}
