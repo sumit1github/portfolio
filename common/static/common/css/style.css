@@ -1,35 +1,4 @@
-/* ------------------------------------------------
- Author: ArtStyles (Art)
- 
- Template Name: vCard
- version: 1.1.0
------------------------------------------------- */
-/* ------------------------------------------------
- 
- - Vendors
- - Font Icons
- - Variables
- - General Styles
- - Typography
- - Form
- - Button
- - Sidebar
- - Sections
- - Navbar
- - Popup
- - Cases
- - Clients
- - Contact
- - Portfolio
- - News
- - Single news
- - Single project
- - Testimonials
- - Timeline
- - Footer
- - Other
- 
------------------------------------------------- */
+
 @import url("vendors/swiper.min.css");
 @import url("vendors/simplebar.min.css");
 @import url("vendors/magnific-popup.css");
@@ -3392,4 +3361,20 @@ button:focus {
 ----------------------------------------------------------------- */
 .tecnology_used{
   padding: 16px;
+}
+
+/* prortfolio website */
+.portfolio .header{
+  color: black;
+  font-size: 18px;
+  font-weight: 500;
+}
+.portfolio .short_descrition{
+  color: black;
+  margin-top: -34px;
+}
+.portfolio .more{
+  float: right;
+  color: #073677;
+  font-weight: 500;
 }

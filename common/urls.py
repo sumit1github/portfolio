@@ -3,7 +3,7 @@ from . import views
 app_name= 'common'
 
 urlpatterns = [
-    path('sumit', views.Sumit.as_view(), name="sumit"),
+    path('', views.Sumit.as_view(), name="sumit"),
     path('sumit_portfolio', views.SumitPortfolio.as_view(), name='sumit_portfolio'),
     path('sumit_project_detail/<str:project_id>', views.SumitProjectDetail.as_view(), name= "sumit_project_detail"),
     path("project_list", views.ProjectList.as_view(), name='project_list'),

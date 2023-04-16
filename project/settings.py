@@ -2,16 +2,19 @@ import os
 from pathlib import Path
 from django.contrib.messages import constants as messages
 
+from dotenv import load_dotenv
+
+load_dotenv() 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-u1%-)f4^3*bms!pbay=o@qk=ywv$g(t-e2la#yhzp_in*p@tmq"
+SECRET_KEY = os.environ['SECRET_KEY']
 
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -110,6 +113,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 #STATICFILES_DIRS=[os.path.join(BASE_DIR,'static_files')]
+STATIC_ROOT =os.path.join(BASE_DIR,'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
