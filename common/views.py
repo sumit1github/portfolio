@@ -28,12 +28,13 @@ class SumitProjectDetail(View):
     model = Project
 
     def get(self, request, project_id):
-        porject = self.model.objects.get(id= project_id)
-        p_images = ProjectImages.objects.filter(project = porject)
+        project = self.model.objects.get(id= project_id)
+        p_images = ProjectImages.objects.filter(project = project)
         context = {
-            'porject': porject,
+            'project': project,
             'project_images': p_images
         }
+
         return render(request, self.template, context)
 
 class ProjectList(View):
