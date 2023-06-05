@@ -15,10 +15,10 @@
 	{% for project in porject_list %}
 		<div class="gallery-grid__item category-design portfolio">
 			<div class="card border-success mb-3" style="max-width: 18rem;">
-				<div class="card-header bg-transparent border-success header">Header</div>
+				<div class="card-header bg-transparent border-success header">{{project.title}}</div>
 				<div class="card-body text-success">
-				  <h5 class="card-title">Success card title</h5>
-				  <p class="card-text short_descrition">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				  <h5 class="card-title"></h5>
+				  <p class="card-text short_descrition">{{project.description|safe|truncatechars:100}}</p>
 				</div>
 				<div class="card-footer bg-transparent border-success">
 					<a target="_blank" href="{% url 'common:sumit_project_detail' project.id %}">
@@ -27,7 +27,7 @@
 				</div>
 			  </div>
 		</div>
-		
+
 	{% endfor %}
 
 </div>

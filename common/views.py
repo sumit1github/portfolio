@@ -5,6 +5,10 @@ from django.contrib import messages
 from .forms import ProjectForm, ProjectImagesForm
 from .models import User, ProjectImages, Project
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .serializers import ProductSerializer
+
 class Sumit(View):
     template = 'common/sumit/sumit.html'
 
@@ -22,6 +26,18 @@ class SumitPortfolio(View):
             'porject_list': porject_list
         }
         return render(request, self.template, context)
+    
+
+class APISumitPortfolio(APIView):
+    model = Project
+    serializer_class = ProductSerializer
+
+    def get(self, request):
+        porject_list = self.model.objects.filter(user__email= 'sumit1panda@gmail.com')
+        return Response({
+            "status":200,
+            "project_list" : self.serializer_class(porject_list, many = True).data
+        })
 
 class SumitProjectDetail(View):
     template = 'common/sumit/sumit_project_detail.html'
@@ -36,6 +52,18 @@ class SumitProjectDetail(View):
         }
 
         return render(request, self.template, context)
+
+class APISumitPortfolioDetail(APIView):
+    model = Project
+    serializer_class = ProductSerializer
+
+    def get(self, request, project_id):
+        project = self.model.objects.get(id= project_id)
+        return Response({
+            "status":200,
+            "project_list" : self.serializer_class(project).data
+        })
+
 
 class ProjectList(View):
     model = Project
