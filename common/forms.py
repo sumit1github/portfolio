@@ -8,12 +8,9 @@ class ProjectForm(forms.ModelForm):
     title = forms.CharField(max_length=255, label='Project Name')
     title.widget.attrs.update({'class': 'form-control','type':'text','placeholder':'Project Name',"required":"required"})
 
-    cover_image= forms.FileField(required= False)
-    cover_image.widget.attrs.update({'class': 'form-control','type':'file',"required":"required"})
-
     class Meta:
         model = Project
-        fields = ['title','description','cover_image']
+        fields = ['title','description']
 
 
 class ProjectImagesForm(forms.ModelForm):
