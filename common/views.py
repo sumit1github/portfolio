@@ -11,9 +11,15 @@ from .serializers import ProductSerializer
 
 class Sumit(View):
     template = 'common/sumit/sumit.html'
+    model = Project
 
     def get(self, request):
-        return render(request, self.template)
+        porject_list = self.model.objects.filter(user__email= 'sumit1panda@gmail.com')
+        
+        context = {
+            'porject_list': porject_list
+        }
+        return render(request, self.template, context)
     
 class SumitPortfolio(View):
     template = 'common/sumit/portfolio.html'
@@ -123,7 +129,7 @@ class ProjectEdit(View):
 
         return redirect('common:project_edit',project_id=project_id )
     
-
+# https://ambuusaportal.assiduusinc.com/
 class ProjectImageAddDelete(View):
     model = Project
     from_class = ProjectImagesForm

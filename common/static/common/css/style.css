@@ -3378,3 +3378,8 @@ button:focus {
   color: #073677;
   font-weight: 500;
 }
+
+/* technology list */
+#technology_list div{
+  text-align: center;
+}
