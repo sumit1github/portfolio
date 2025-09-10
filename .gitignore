@@ -26,3 +26,5 @@ logs/
 # Ignore IDE files
 .idea/
 .vscode/
+node_modules
+.DS_Store
