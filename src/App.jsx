@@ -11,7 +11,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Professional />} />
-        <Route path="/project" element={<ProjectDetails />} />
+        <Route path="/project/:project_id" element={<ProjectDetails />} />
       </Routes>
 
       <ToastContainer

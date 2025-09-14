@@ -12,14 +12,19 @@
 .portfolio-bg::before {
     content: '';
     position: fixed;
-    top: 0;
+
+    top: .fade-in-tech {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
+    }
+
     left: 0;
     width: 100%;
     height: 100%;
-    background:
-        radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(0, 255, 0, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 50%);
+    background: radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 255, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 50%);
     pointer-events: none;
     z-index: -1;
 }
@@ -331,7 +336,7 @@
 .fade-in-tech {
     opacity: 0;
     transform: translateY(50px);
-    transition: all 1.2s ease;
+    transition: all 0.3s ease;
 }
 
 .fade-in-tech.visible {

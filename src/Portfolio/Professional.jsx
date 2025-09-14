@@ -8,7 +8,14 @@ import Template from './Template';
 
 const Professional = () => {
     const [activeSection, setActiveSection] = useState('hero');
-    const [isVisible, setIsVisible] = useState({});
+    const [isVisible, setIsVisible] = useState({
+        hero: true,
+        about: true,
+        skills: true,
+        experience: true,
+        projects: true,
+        contact: true
+    });
 
     // SEO Meta tags effect
     useEffect(() => {
@@ -65,7 +72,10 @@ const Professional = () => {
                     }
                 });
             },
-            { threshold: 0.3 }
+            {
+                threshold: 0.1,
+                rootMargin: "50px 0px"
+            }
         );
 
         const sections = document.querySelectorAll('section[id]');
@@ -112,7 +122,7 @@ const Professional = () => {
             </section>            {/* About Section */}
             <section id="about" className="tech-section section-dark-tech full-width-section">
                 <div className="container-fluid px-4">
-                    <div className={`fade-in-tech ${isVisible.about ? 'visible' : ''}`} style={{ transitionDelay: '0.2s' }}>
+                    <div className={`fade-in-tech ${isVisible.about ? 'visible' : ''}`}>
                         <h2 className="tech-heading display-4 fw-bold text-center mb-5">
                             $ cat about_me.json
                         </h2>
@@ -178,7 +188,7 @@ const Professional = () => {
             {/* Skills Section */}
             <section id="skills" className="tech-section full-width-section">
                 <div className="container-fluid px-4">
-                    <div className={`fade-in-tech ${isVisible.skills ? 'visible' : ''}`} style={{ transitionDelay: '0.4s' }}>
+                    <div className={`fade-in-tech ${isVisible.skills ? 'visible' : ''}`}>
                         <h2 className="tech-heading display-4 fw-bold text-center mb-5">
                             $ ls -la skills/
                         </h2>
@@ -212,7 +222,7 @@ const Professional = () => {
             {/* Experience Section */}
             <section id="experience" className="tech-section section-dark-tech full-width-section">
                 <div className="container-fluid px-4">
-                    <div className={`fade-in-tech ${isVisible.experience ? 'visible' : ''}`} style={{ transitionDelay: '0.6s' }}>
+                    <div className={`fade-in-tech ${isVisible.experience ? 'visible' : ''}`}>
                         <h2 className="tech-heading display-4 fw-bold text-center mb-5">
                             $ git log --oneline experience
                         </h2>
@@ -270,43 +280,54 @@ const Professional = () => {
             {/* Projects Section */}
             <section id="projects" className="tech-section full-width-section">
                 <div className="container-fluid px-4">
-                    <div className={`fade-in-tech ${isVisible.projects ? 'visible' : ''}`} style={{ transitionDelay: '0.8s' }}>
+                    <div className={`fade-in-tech ${isVisible.projects ? 'visible' : ''}`}>
                         <h2 className="tech-heading display-4 fw-bold text-center mb-5">
                             $ cat projects/*.md
                         </h2>
                         <div className="row g-4">
                             {projects.map((project, index) => (
                                 <div key={index} className="col-lg-6">
-                                    <div className="tech-card h-100">
-                                        <div className="terminal-text mb-4">
-                                            <div className="text-warning h4 mb-3">
-                                                PROJECT: {project.title.replace(/\s/g, '_').toUpperCase()}
+                                    <div className="tech-card h-100 d-flex flex-column">
+                                        <div className="flex-grow-1">
+                                            <div className="terminal-text mb-4">
+                                                <div className="text-warning h4 mb-3">
+                                                    PROJECT: {project.title.replace(/\s/g, '_').toUpperCase()}
+                                                </div>
+                                            </div>
+                                            <div className="code-block mb-4">
+                                                <div className="text-success">// Description</div>
+                                                <div className="text-light">{project.description}</div>
+                                            </div>
+                                            <div className="mb-4">
+                                                <h4 className="text-warning mb-3">FEATURES[]:</h4>
+                                                <div className="d-flex flex-wrap gap-2 mb-3">
+                                                    {project.highlights.map((highlight, i) => (
+                                                        <span key={i} className="skill-tag-tech tech-tag-green">
+                                                            {highlight}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h5 className="text-info mb-3">STACK:</h5>
+                                                <div className="d-flex flex-wrap gap-2 mb-4">
+                                                    {project.technologies.map((tech, i) => (
+                                                        <span key={i} className="skill-tag-tech">
+                                                            {tech}
+                                                        </span>
+                                                    ))}
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className="code-block mb-4">
-                                            <div className="text-success">// Description</div>
-                                            <div className="text-light">{project.description}</div>
-                                        </div>
-                                        <div className="mb-4">
-                                            <h4 className="text-warning mb-3">FEATURES[]:</h4>
-                                            <div className="d-flex flex-wrap gap-2 mb-3">
-                                                {project.highlights.map((highlight, i) => (
-                                                    <span key={i} className="skill-tag-tech tech-tag-green">
-                                                        {highlight}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <h5 className="text-info mb-3">STACK:</h5>
-                                            <div className="d-flex flex-wrap gap-2">
-                                                {project.technologies.map((tech, i) => (
-                                                    <span key={i} className="skill-tag-tech">
-                                                        {tech}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
+                                        {project?.is_details_present ?
+                                            (<div className="text-center mt-4">
+                                                <a href={`/project/${project.id}`} className="btn btn-tech">
+                                                    <ExternalLink size={16} className="me-2" />
+                                                    VIEW_DETAILS()
+                                                </a>
+                                            </div>)
+                                            : ""}
+
                                     </div>
                                 </div>
                             ))}
@@ -318,7 +339,7 @@ const Professional = () => {
             {/* Contact Section */}
             <section id="contact" className="tech-section section-dark-tech full-width-section">
                 <div className="container-fluid px-4">
-                    <div className={`fade-in-tech ${isVisible.contact ? 'visible' : ''}`} style={{ transitionDelay: '1s' }}>
+                    <div className={`fade-in-tech ${isVisible.contact ? 'visible' : ''}`}>
                         <h2 className="tech-heading display-4 fw-bold text-center mb-5">
                             $ ./initiate_connection.sh
                         </h2>
