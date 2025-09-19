@@ -321,7 +321,7 @@ const Professional = () => {
                                         </div>
                                         {project?.is_details_present ?
                                             (<div className="text-center mt-4">
-                                                <a href={`#/project/${project.id}`} className="btn btn-tech">
+                                                <a href={`/project/${project.id}`} className="btn btn-tech">
                                                     <ExternalLink size={16} className="me-2" />
                                                     VIEW_DETAILS()
                                                 </a>
