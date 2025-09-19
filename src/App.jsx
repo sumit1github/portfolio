@@ -4,15 +4,18 @@ import { ToastContainer, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Professional from "./Portfolio/Professional";
 import { ProjectDetails } from "./Portfolio/pages/ProjectDetails";
+import { HashRouter } from "react-router-dom";
 
 
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Professional />} />
-        <Route path="/project/:project_id" element={<ProjectDetails />} />
-      </Routes>
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<Professional />} />
+          <Route path="/project/:project_id" element={<ProjectDetails />} />
+        </Routes>
+      </HashRouter>
 
       <ToastContainer
         position="top-right"
