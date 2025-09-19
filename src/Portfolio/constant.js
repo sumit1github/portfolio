@@ -422,7 +422,9 @@ export const projects = [
             "Instant winning amount credit.",
             "Granular admin reporting.",
             "End TO End Customization."
-        ]
+        ],
+        yt_url: "https://www.youtube.com/embed/2ajcaUK1H-U",
+        is_details_present: true,
     },
     {
         id: 7,
